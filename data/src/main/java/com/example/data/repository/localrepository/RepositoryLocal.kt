@@ -18,14 +18,14 @@ class RepositoryLocal(private val userDao: UserDao) : IUserLocalRepository {
     }
 
     override fun insertUser(userDomain: UserDomain) {
-        insertUser(userDomainToEntity(userDomain))
+      return  insertUser(userDomainToEntity(userDomain))
     }
 
     override fun insertUserList(listUserDomain: List<UserDomain>) {
         val usersEntity = listUserDomain.map {
             userDomainToEntity(it)
         }
-        insertUsers(usersEntity)
+        insertListUsers(usersEntity)
     }
 
     override fun getUserList(): List<UserDomain> = userDao.getUserList().map {
@@ -51,7 +51,7 @@ class RepositoryLocal(private val userDao: UserDao) : IUserLocalRepository {
 
     }
 
-    private fun insertUsers(userEntities: List<UserEntity>) {
+    private fun insertListUsers(userEntities: List<UserEntity>) {
         userDao.inserListUser(userEntities)
     }
 
