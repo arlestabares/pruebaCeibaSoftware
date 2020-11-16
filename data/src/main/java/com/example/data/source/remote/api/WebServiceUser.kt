@@ -6,6 +6,10 @@ import retrofit2.http.GET
 
 interface WebServiceUser {
 
-    @GET("/users")
-    fun getUser(id:Int): Call<UserDTO>
+//    @GET("/users")
+//    fun getUser(id:Int): Call<UserDTO>
 }
+
+//crear las funciones o API y definir metodos los cuales voy a consultar
+//como getUser, GetPost,
+//

@@ -5,7 +5,7 @@ import com.example.data.source.local.dao.UserDao
 import com.example.dominio.service.model.UserDomain
 import repository.IUserLocalRepository
 
-class RepositoryLocal(private val userDao: UserDao) : IUserLocalRepository {
+class RepositoryLocal(private val userDao: UserDao): IUserLocalRepository {
 
 
     override fun getUser(id: Int): UserDomain {
@@ -38,6 +38,7 @@ class RepositoryLocal(private val userDao: UserDao) : IUserLocalRepository {
 
 
     private fun userEntityToDomain(userEntity: UserEntity): UserDomain {
+
         return UserDomain(userEntity.id, userEntity.name, userEntity.phone, userEntity.mail)
     }
 
@@ -58,6 +59,4 @@ class RepositoryLocal(private val userDao: UserDao) : IUserLocalRepository {
     private fun getUserDbById(id: Int): UserEntity {
         return userDao.getUserById(id)
     }
-
-
 }

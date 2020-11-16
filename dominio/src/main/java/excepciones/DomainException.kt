@@ -1,6 +1,6 @@
 package excepciones
 
-class DomainException(mensaje: String): Exception() {
+class DomainException(mensaje: String): Exception(mensaje) {
 
 
 }

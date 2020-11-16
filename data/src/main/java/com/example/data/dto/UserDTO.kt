@@ -23,3 +23,5 @@ data class UserDTO (
 		@SerializedName("website") val website : String,
 		@SerializedName("company") val company : Company
 )
+
+
