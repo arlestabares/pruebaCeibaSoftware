@@ -1,3 +1,6 @@
+package com.example.data.dto
+
+
 import com.google.gson.annotations.SerializedName
 
 /*
@@ -12,16 +15,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class UserDTO (
+data class UserDTO(
+	@SerializedName("id") val id: Int,
+	@SerializedName("name") val name: String,
+	@SerializedName("username") val username: String,
+	@SerializedName("email") val email: String,
+	@SerializedName("address") val address: Address,
+	@SerializedName("phone") val phone: String,
+	@SerializedName("website") val website: String,
+	@SerializedName("company") val company: Company
 
-		@SerializedName("id") val id : Int,
-		@SerializedName("name") val name : String,
-		@SerializedName("username") val username : String,
-		@SerializedName("email") val email : String,
-		@SerializedName("address") val address : Address,
-		@SerializedName("phone") val phone : String,
-		@SerializedName("website") val website : String,
-		@SerializedName("company") val company : Company
 )
 
 

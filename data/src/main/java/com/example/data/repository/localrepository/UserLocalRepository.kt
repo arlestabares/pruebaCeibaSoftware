@@ -2,10 +2,10 @@ package com.example.data.repository.localrepository
 
 import com.example.data.model.UserEntity
 import com.example.data.source.local.dao.UserDao
-import com.example.dominio.service.model.UserDomain
+import com.example.dominio.model.UserDomain
 import repository.IUserLocalRepository
 
-class RepositoryLocal(private val userDao: UserDao): IUserLocalRepository {
+class UserLocalRepository(private val userDao: UserDao): IUserLocalRepository {
 
 
     override fun getUser(id: Int): UserDomain {
@@ -28,18 +28,17 @@ class RepositoryLocal(private val userDao: UserDao): IUserLocalRepository {
         insertListUsers(usersEntity)
     }
 
-    override fun getUserList(): List<UserDomain> = userDao.getUserList().map {
+    override fun getUsersList(): List<UserDomain> = userDao.getUserList().map {
         userEntityToDomain(it)
     }
 
     override fun getSizeList(): Int {
-         return getUserList().size
+         return getUsersList().size
     }
-
 
     private fun userEntityToDomain(userEntity: UserEntity): UserDomain {
 
-        return UserDomain(userEntity.id, userEntity.name, userEntity.phone, userEntity.mail)
+        return UserDomain(userEntity.id, userEntity.name, userEntity.phone, userEntity.mail,null)
     }
 
     private fun userDomainToEntity(userDomain: UserDomain): UserEntity {
@@ -48,7 +47,7 @@ class RepositoryLocal(private val userDao: UserDao): IUserLocalRepository {
 
 
     private fun insertUser(userEntity: UserEntity) {
-        userDao.insert(userEntity)
+        userDao.insertUser(userEntity)
 
     }
 

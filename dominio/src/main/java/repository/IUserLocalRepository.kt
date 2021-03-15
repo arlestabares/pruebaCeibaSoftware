@@ -1,6 +1,6 @@
 package repository
 
-import com.example.dominio.service.model.UserDomain
+import com.example.dominio.model.UserDomain
 
 interface IUserLocalRepository {
 
@@ -13,7 +13,7 @@ interface IUserLocalRepository {
 
     fun insertUserList(userDomain: List<UserDomain>)
 
-    fun getUserList(): List<UserDomain>
+    fun getUsersList(): List<UserDomain>
 
     fun getSizeList():Int
 

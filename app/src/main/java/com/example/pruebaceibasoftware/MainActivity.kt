@@ -3,15 +3,14 @@ package com.example.pruebaceibasoftware
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dominio.service.IUserService
-import com.example.dominio.service.UserService
-import com.example.dominio.service.model.UserDomain
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
-   val service : IUserService by inject()
+    val service: IUserService by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,21 +19,22 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        boton.setOnClickListener {
-            val id = 6
-            val nombre = "lola"
-            val telefono = "telefono"
-            val mail = "mail"
+        buttonLLamadaApi.setOnClickListener {
+            //Si necesitamos un ambito muy amplio como el de Application podemos utilizar un globalScope
+            // ya que este se seguira ejecutando o estara vivo mientras la aplicacion se este ejecuctando o continue
+            //launch es el constructor por defecto , y dentro podremos ejecutar funciones de suspension que bloquean la ejecucion de la corrutina
+            //pero que si se hacen bien no bloquean el hilo en el que se este ejecutando.
+            GlobalScope.launch() {
+                val users = service.getUsers()
 
-            try {
-
-                service.insertUser(id, nombre, telefono, mail)
-            }catch (e:Exception){
-                e.message
+                users.map {
+                    print(it)
+                }
             }
+
         }
 
-
     }
+
 
 }

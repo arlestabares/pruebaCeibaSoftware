@@ -16,4 +16,8 @@ data class UserEntity (
     val phone: String,
     @SerializedName("mail")
     val mail: String
+
+//realizar un foreig key con UserPostsDTO
+
+
 )

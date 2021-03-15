@@ -1,14 +1,42 @@
 package com.example.dominio.service
 
-import com.example.dominio.service.model.UserDomain
+import com.example.dominio.IConnectivity
+import com.example.dominio.model.UserDomain
 import excepciones.DomainException
 import repository.IUserLocalRepository
+import repository.IUserRemoteRepository
 
-class UserService(private val iUserLocalRepository: IUserLocalRepository) : IUserService {
+class UserService(
+    private val iUserLocalRepository: IUserLocalRepository,
+    private val iUserRemoteRepository: IUserRemoteRepository,
+    private val iConnectivity: IConnectivity
+) : IUserService {
+
+    // crear  una funcion donde reciba los parametros desde el main,
+    // luego llamo a la funcion insertUser(), y creo un objeto de tipo UserDomain con los parametros y luego
+    // lo ingreso en base de datos
+    override fun insertUser(id: Int, name: String, phone: String, mail: String) {
+        insertUser(UserDomain(id, name, phone, mail,null))
+
+    }
+
+    override suspend fun getUsers(): List<UserDomain> {
+        var usersDomain: List<UserDomain>
+        if (iConnectivity.hasNetwork()) {
+            //pido los datos y los almaceno en la base de datos local
+            usersDomain = iUserRemoteRepository.getUsers()
+            iUserLocalRepository.insertUserList(usersDomain)
+        } else {
+            usersDomain = iUserLocalRepository.getUsersList()
+        }
+        //Siempre retorno una lista de datos , sea remoto o sea local
+        return usersDomain
+    }
+
 
     //Todo Implementar patron de disenio
     private fun insertUser(userDomain: UserDomain) {
-        if (userDomain.id != null ) {
+        if (userDomain.id != null) {
             if (iUserLocalRepository.getSizeList() == 0) {
                 iUserLocalRepository.insertUser(userDomain)
             } else {
@@ -24,15 +52,6 @@ class UserService(private val iUserLocalRepository: IUserLocalRepository) : IUse
         }
     }
 
-
-    // crear  una funcion donde reciba los parametros desde el main,
-    // luego creo un objeto de tipo UserDomain y llamo a la funcion insertUser y lo inserta en base de datos
-    override fun insertUser(id: Int, name: String, phone: String, mail: String) {
-        insertUser(UserDomain(id, name,phone, mail))
-
-    }
-
-
     private val userCount = emptyList<UserDomain>()
 
     private fun getUserItemCount(): Int {
@@ -44,7 +63,7 @@ class UserService(private val iUserLocalRepository: IUserLocalRepository) : IUse
         if (iUserLocalRepository.getSizeList() == 0) {
             throw DomainException("La lista se encuentra vacia")
         } else {
-            return iUserLocalRepository.getUserList()
+            return iUserLocalRepository.getUsersList()
         }
     }
 
@@ -59,7 +78,7 @@ class UserService(private val iUserLocalRepository: IUserLocalRepository) : IUse
     }
 
     private fun getUserList(): List<UserDomain> {
-        return iUserLocalRepository.getUserList()
+        return iUserLocalRepository.getUsersList()
 
     }
 

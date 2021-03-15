@@ -1,6 +1,5 @@
 package com.example.data.source.local.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,7 +11,7 @@ interface UserDao {
 
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(userEntity: UserEntity)
+    fun insertUser(userEntity: UserEntity)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun inserListUser(userEntity: List<UserEntity>)
@@ -21,5 +20,9 @@ interface UserDao {
     fun getUserById(id: Int): UserEntity
 
     @Query("SELECT * FROM  user_entity  ORDER BY name ASC ")
-    fun getUserList():List<UserEntity>
+    fun getUserList(): List<UserEntity>
+
+    //fun save(body: List<UserEntity>)
+
+   // fun hasUser(freshTimeout: Long): Any
 }
