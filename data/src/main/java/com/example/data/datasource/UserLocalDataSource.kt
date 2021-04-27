@@ -4,13 +4,14 @@ import com.example.data.converters.Converters
 import com.example.data.model.UserEntity
 import com.example.data.source.local.dao.UserDao
 import com.example.data.source.local.dao.UserPostsDao
+import com.example.dominio.datasource.IUserDomainLocalDataSource
 import com.example.dominio.model.UserDomain
 import com.example.dominio.model.UserPostsDomain
 
 
 //solo hace procesos de bases de dato
 class UserLocalDataSource(private val userDao: UserDao, private val userPostsDao: UserPostsDao) :
-    IUserLocalDataSource {
+    IUserDomainLocalDataSource {
 
     private var converters: Converters
 

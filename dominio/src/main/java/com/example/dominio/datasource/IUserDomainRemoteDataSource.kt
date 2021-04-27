@@ -1,7 +1,7 @@
-package com.example.data.datasource
+package com.example.dominio.datasource
 
 import com.example.dominio.model.UserDomain
 
-interface IUserRemoteDataSource {
+interface IUserDomainRemoteDataSource {
     suspend fun getUsers(): List<UserDomain>
 }

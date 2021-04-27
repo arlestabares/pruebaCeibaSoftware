@@ -1,10 +1,10 @@
-package com.example.data.datasource
+package com.example.dominio.datasource
 
-import com.example.data.dto.UserPostsDTO
+
 import com.example.dominio.model.UserDomain
 import com.example.dominio.model.UserPostsDomain
 
-interface IUserLocalDataSource {
+interface IUserDomainLocalDataSource {
     fun getUsersList(): List<UserDomain>
     fun getSizeList(): Int
     fun insertUserList(listUserDomain: List<UserDomain>)

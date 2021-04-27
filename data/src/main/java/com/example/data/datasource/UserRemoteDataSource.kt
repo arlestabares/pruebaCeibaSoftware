@@ -2,13 +2,14 @@ package com.example.data.datasource
 
 import com.example.data.converters.Converters
 import com.example.data.source.remote.retrofit.WebServiceApi
+import com.example.dominio.datasource.IUserDomainRemoteDataSource
 import com.example.dominio.model.UserDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 
 
-class UserRemoteDataSource(private val webServiceApi: WebServiceApi) : IUserRemoteDataSource {
+class UserRemoteDataSource(private val webServiceApi: WebServiceApi) : IUserDomainRemoteDataSource {
 
     private var converters: Converters
 

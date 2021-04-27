@@ -1,15 +1,15 @@
 package com.example.data.repository
 
-import com.example.data.datasource.IUserLocalDataSource
-import com.example.data.datasource.IUserRemoteDataSource
+import com.example.dominio.datasource.IUserDomainLocalDataSource
+import com.example.dominio.datasource.IUserDomainRemoteDataSource
 import com.example.dominio.model.UserDomain
 import com.example.dominio.model.UserPostsDomain
-import repository.IUserRepository
+import com.example.dominio.repository.IUserDomanRepository
 
 class UsersRepository(
-    private var localDataSource: IUserLocalDataSource,
-    private var remoteDataSource: IUserRemoteDataSource
-) : IUserRepository {
+    private var localDataSource: IUserDomainLocalDataSource,
+    private var domainRemoteDataSource: IUserDomainRemoteDataSource
+) : IUserDomanRepository {
 
 
     override suspend fun getAllUsers(): List<UserDomain> {
@@ -17,7 +17,7 @@ class UsersRepository(
         if (localDataSource.getSizeList() != 0) {
             users = localDataSource.getUsersList()
         } else {
-            users = remoteDataSource.getUsers()
+            users = domainRemoteDataSource.getUsers()
             localDataSource.insertUserList(users)
             users.forEach {
                 localDataSource.insertPostByUser(it.posts)

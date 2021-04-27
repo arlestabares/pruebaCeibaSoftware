@@ -2,10 +2,10 @@ package com.example.data.di
 
 import com.example.data.repository.UsersRepository
 import org.koin.dsl.module
-import repository.IUserRepository
+import com.example.dominio.repository.IUserDomanRepository
 
 val repositoryUserModule = module {
-    single<IUserRepository> {
+    single<IUserDomanRepository> {
         UsersRepository(get(), get())
     }
 }

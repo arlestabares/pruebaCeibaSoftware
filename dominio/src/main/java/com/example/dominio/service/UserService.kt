@@ -2,14 +2,14 @@ package com.example.dominio.service
 
 import com.example.dominio.IConnectivity
 import com.example.dominio.model.UserDomain
-import repository.IUserRepository
+import com.example.dominio.repository.IUserDomanRepository
 
 class UserService(
-    private val iUserRepository: IUserRepository,
+    private val iUserDomanRepository: IUserDomanRepository,
     private val iConnectivity: IConnectivity
 ) : IUserService {
 
     override suspend fun getUsers(): List<UserDomain> {
-        return iUserRepository.getAllUsers()
+        return iUserDomanRepository.getAllUsers()
     }
 }
