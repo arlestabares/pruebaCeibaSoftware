@@ -6,8 +6,8 @@ class UserDomain(
     val name: String,
     val phone: String,
     val mail: String,
-    var posts:List<UserPostsDomain>?
-) //: List<UserDomain>
+    var posts:List<UserPostsDomain>
+)
 
 
 

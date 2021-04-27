@@ -1,7 +1,6 @@
 package com.example.data.dto
 
 
-
 import com.google.gson.annotations.SerializedName
 
 /*
@@ -16,11 +15,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Address (
+data class Address(
 
-		@SerializedName("street") val street : String,
-		@SerializedName("suite") val suite : String,
-		@SerializedName("city") val city : String,
-		@SerializedName("zipcode") val zipcode : String,
-		@SerializedName("geo") val geo : Geo
+	@SerializedName("street") val street: String,
+	@SerializedName("suite") val suite: String,
+	@SerializedName("city") val city: String,
+	@SerializedName("zipcode") val zipcode: String,
+	@SerializedName("geo") val geo: Geo
 )

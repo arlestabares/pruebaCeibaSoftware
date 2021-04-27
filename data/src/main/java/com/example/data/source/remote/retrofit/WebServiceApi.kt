@@ -4,6 +4,7 @@ import com.example.data.dto.UserDTO
 import com.example.data.dto.UserPostsDTO
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface WebServiceApi {
 
@@ -11,7 +12,7 @@ interface WebServiceApi {
     suspend fun getUser(): Response<List<UserDTO>>
 
     @GET("posts")
-    suspend fun getAllPostsUser(userId: Int): Response<List<UserPostsDTO>>
+    suspend fun getAllPostsUser(@Query("userId") userId: Int): Response<List<UserPostsDTO>>
 
 
 }

@@ -16,9 +16,7 @@ interface UserPostsDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertPostsList(userPostsEntity: List<UserPostsEntity>)
-    @Query("SELECT * FROM user_posts WHERE id = :id")
-    fun getPostsUserById(id:Int):UserPostsEntity
+    @Query("SELECT * FROM user_posts WHERE userId = :idUser")
+    fun getPostsUserById(idUser:Int):List<UserPostsEntity>
 
-    @Query("SELECT * FROM user_posts ORDER BY title ASC")
-    fun getPostsUser():LiveData<List<UserPostsEntity>>
 }

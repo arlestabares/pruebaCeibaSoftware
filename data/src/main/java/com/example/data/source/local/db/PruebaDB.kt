@@ -7,10 +7,12 @@ import androidx.room.RoomDatabase
 import com.example.data.model.UserEntity
 import com.example.data.model.UserPostsEntity
 import com.example.data.source.local.dao.UserDao
+import com.example.data.source.local.dao.UserPostsDao
 
 
-@Database(entities = [UserEntity::class,UserPostsEntity::class], version =2, exportSchema = false)
+@Database(entities = [UserEntity::class,UserPostsEntity::class], version =3, exportSchema = false)
 abstract class PruebaDB : RoomDatabase() {
     abstract  fun userDao():UserDao
+    abstract  fun postUserDao():UserPostsDao
 
 }

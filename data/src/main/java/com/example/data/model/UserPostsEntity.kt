@@ -2,19 +2,30 @@ package com.example.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "user_posts")
-data class UserPostsEntity (
+@Entity(
+    tableName = "user_posts", foreignKeys = arrayOf(
+        ForeignKey(
+            entity = UserEntity::class,
+            parentColumns = arrayOf("id"),
+            childColumns = arrayOf("userId"),
+            onDelete = CASCADE
+        )
+    )
+)
+data class UserPostsEntity(
 
-        @SerializedName("userId")
-        val userId:Int,
-        @PrimaryKey
-        val id:Int,
-        @SerializedName("title")
-        val title :String,
-        @SerializedName("body")
-        val body:String
+    @ColumnInfo(name = "userId")
+    val userId: Int,
+
+    @PrimaryKey
+    val id: Int,
+
+    val title: String,
+
+    val body: String
 
 )
