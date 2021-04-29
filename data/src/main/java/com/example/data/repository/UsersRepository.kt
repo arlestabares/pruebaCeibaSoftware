@@ -4,12 +4,12 @@ import com.example.dominio.datasource.IUserDomainLocalDataSource
 import com.example.dominio.datasource.IUserDomainRemoteDataSource
 import com.example.dominio.model.UserDomain
 import com.example.dominio.model.UserPostsDomain
-import com.example.dominio.repository.IUserDomanRepository
+import com.example.dominio.repository.IUserDomainRepository
 
 class UsersRepository(
     private var localDataSource: IUserDomainLocalDataSource,
     private var domainRemoteDataSource: IUserDomainRemoteDataSource
-) : IUserDomanRepository {
+) : IUserDomainRepository {
 
 
     override suspend fun getAllUsers(): List<UserDomain> {
@@ -24,6 +24,10 @@ class UsersRepository(
             }
         }
         return users
+    }
+
+    override suspend fun getAllUsersByName(name: String): List<UserDomain> {
+        return localDataSource.getUsersListByName(name)
     }
 
     override suspend fun getAllPost(idUser: Int): List<UserPostsDomain> {

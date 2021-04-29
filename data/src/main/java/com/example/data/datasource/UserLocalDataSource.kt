@@ -43,6 +43,11 @@ class UserLocalDataSource(private val userDao: UserDao, private val userPostsDao
         converters.userEntityToDomain(it)
     }
 
+    override fun getUsersListByName(name: String): List<UserDomain> =
+        userDao.getUserListByName(name).map {
+            converters.userEntityToDomain(it)
+        }
+
     override fun getSizeList(): Int {
         return getUsersList().size
     }

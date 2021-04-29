@@ -1,13 +1,13 @@
 package com.example.dominio.service
 
 import com.example.dominio.model.UserPostsDomain
-import com.example.dominio.repository.IUserDomanRepository
+import com.example.dominio.repository.IUserDomainRepository
 
 class UsersPostService(
-    private val iUserDomanRepository: IUserDomanRepository
+    private val iUserDomainRepository: IUserDomainRepository
 ) : IUserPostService {
 
     override suspend fun getPostByUsers(idUser: Int): List<UserPostsDomain> {
-        return iUserDomanRepository.getAllPost(idUser)
+        return iUserDomainRepository.getAllPost(idUser)
     }
 }

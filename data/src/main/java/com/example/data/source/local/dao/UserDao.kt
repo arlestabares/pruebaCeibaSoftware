@@ -22,6 +22,9 @@ interface UserDao {
     @Query("SELECT * FROM  user_entity  ORDER BY name ASC ")
     fun getUserList(): List<UserEntity>
 
+    @Query("SELECT * FROM user_entity WHERE name LIKE '%' ||  :name || '%'")
+    fun getUserListByName(name:String): List<UserEntity>
+
     //fun save(body: List<UserEntity>)
 
    // fun hasUser(freshTimeout: Long): Any

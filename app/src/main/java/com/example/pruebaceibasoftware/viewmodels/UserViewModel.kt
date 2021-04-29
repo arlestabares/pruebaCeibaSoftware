@@ -27,8 +27,11 @@ class UserViewModel(private val iUserService: IUserService) : ViewModel() {
         }
     }
 
-    private fun GetUsersByName(name:String){
-
-
+     fun GetUsersByName(name:String){
+         CoroutineScope(Dispatchers.IO).launch {
+             withContext(Dispatchers.Main){
+                 _lvUsers.value = iUserService.getUsersBySearch(name)
+             }
+         }
     }
 }
