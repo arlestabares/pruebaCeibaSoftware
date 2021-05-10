@@ -7,7 +7,6 @@ class UsersPostService(
     private val iUserDomainRepository: IUserDomainRepository
 ) : IUserPostService {
 
-    override suspend fun getPostByUsers(idUser: Int): List<UserPostsDomain> {
-        return iUserDomainRepository.getAllPost(idUser)
-    }
+    override suspend fun getPostByUsers(idUser: Int) = iUserDomainRepository.getAllPost(idUser)
+
 }

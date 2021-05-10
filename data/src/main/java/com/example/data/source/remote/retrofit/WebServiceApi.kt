@@ -13,9 +13,8 @@ interface WebServiceApi {
 
     @GET("posts")
     suspend fun getAllPostsUser(@Query("userId") userId: Int): Response<List<UserPostsDTO>>
-
-
+    
 }
 
 //crear las funciones o API y definir metodos los cuales voy a consultar
-//como getUser, GetPost,
+//como getUser, GetPostUser,

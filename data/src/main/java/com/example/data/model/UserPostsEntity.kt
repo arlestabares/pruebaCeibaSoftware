@@ -20,12 +20,9 @@ data class UserPostsEntity(
 
     @ColumnInfo(name = "userId")
     val userId: Int,
-
     @PrimaryKey
     val id: Int,
-
     val title: String,
-
     val body: String
 
 )

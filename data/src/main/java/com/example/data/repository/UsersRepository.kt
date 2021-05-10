@@ -26,12 +26,12 @@ class UsersRepository(
         return users
     }
 
+    override suspend fun getAllPost(idUser: Int): List<UserPostsDomain> {
+        return localDataSource.getAllPost(idUser)
+    }
     override suspend fun getAllUsersByName(name: String): List<UserDomain> {
         return localDataSource.getUsersListByName(name)
     }
 
-    override suspend fun getAllPost(idUser: Int): List<UserPostsDomain> {
-        return localDataSource.getAllPost(idUser)
-    }
 
 }

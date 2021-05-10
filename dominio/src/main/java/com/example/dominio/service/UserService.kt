@@ -14,6 +14,17 @@ class UserService(
     }
 
     override suspend fun getUsersBySearch(name: String): List<UserDomain> {
-        return iUserDomainRepository.getAllUsersByName(name)
+        if (iConnectivity.hasNetwork()){
+            return iUserDomainRepository.getAllUsersByName(name)
+        }
+        return listOf()
+    }
+
+    fun sumar(numero1: Int, numero2:Int):Int{
+        var resul  = numero1 + numero2 + 1
+        if (numero1 != 1){
+             resul  = numero1 + numero2
+        }
+        return resul
     }
 }

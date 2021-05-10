@@ -16,6 +16,8 @@ interface UserPostsDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertPostsList(userPostsEntity: List<UserPostsEntity>)
+
+    //
     @Query("SELECT * FROM user_posts WHERE userId = :idUser")
     fun getPostsUserById(idUser:Int):List<UserPostsEntity>
 

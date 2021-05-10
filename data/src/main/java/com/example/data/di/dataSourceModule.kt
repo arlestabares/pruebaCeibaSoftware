@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 val localDataSourceModule = module {
 
-    //cada vez que necesite el RepositoryLocal, lo hare por medio de la interfaz  IUserLocalRepository, que actua como puente entre la conexion
+    //cada vez que necesite el UserLocalDataSource, lo hare por medio de la interfaz  IUserDomainLocalDataSource, que actua como puente entre la conexion
     single<IUserDomainLocalDataSource> {
         UserLocalDataSource(get(),get())
     }
@@ -16,7 +16,7 @@ val localDataSourceModule = module {
 
 val remoteDataSourceModule = module {
 
-    //cada vez que necesite el RepositoryLocal, lo hare por medio de la interfaz  IUserLocalRepository, que actua como puente entre la conexion
+    //cada vez que necesite el UserRemoteDataSource, lo hare por medio de la interfaz  IUserDomainRemoteDataSource, que actua como puente entre la conexion
     single<IUserDomainRemoteDataSource> {
         UserRemoteDataSource(get())
     }

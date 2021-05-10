@@ -22,7 +22,6 @@ class Converters {
         )
     }
 
-
     fun userEntityToDomain(userEntity: UserEntity): UserDomain {
         return UserDomain(
             userEntity.id,
@@ -32,6 +31,16 @@ class Converters {
             listOf()
         )
     }
+
+    fun userPostEntityToDomain(userPostsEntity: UserPostsEntity): UserPostsDomain {
+        return UserPostsDomain(
+            userPostsEntity.userId,
+            userPostsEntity.id,
+            userPostsEntity.title,
+            userPostsEntity.body
+        )
+    }
+
 
     fun userDomainToEntity(userDomain: UserDomain): UserEntity {
         return UserEntity(userDomain.id, userDomain.name, userDomain.phone, userDomain.mail)
@@ -45,16 +54,4 @@ class Converters {
             userPostsDomain.body
         )
     }
-
-
-    fun userPostEntityToDomain(userPostsEntity: UserPostsEntity): UserPostsDomain {
-        return UserPostsDomain(
-            userPostsEntity.userId,
-            userPostsEntity.id,
-            userPostsEntity.title,
-            userPostsEntity.body
-        )
-    }
-
-
 }
